@@ -1,0 +1,24 @@
+DEVICE_PATH := device/samsung/jackpotlte
+
+# Asserts
+TARGET_OTA_ASSERT_DEVICE := jackpotlte
+
+# Kernel
+TARGET_KERNEL_CONFIG := exynos7885-jackpotlte_defconfig
+
+# Display
+TARGET_SCREEN_DENSITY := 441
+
+# Partitions
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 39845888
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3833593856
+BOARD_CACHEIMAGE_PARTITION_SIZE := 157286400
+BOARD_VENDORIMAGE_PARTITION_SIZE   := 452984832
+
+# Inherit common board flags
+include device/samsung/universal7885-common/BoardConfigCommon.mk
+
+# SPL
+VENDOR_SECURITY_PATCH := 2021-06-01
+
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
