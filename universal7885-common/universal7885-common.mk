@@ -3,9 +3,6 @@ ifeq ($(TARGET_LOCAL_ARCH),arm64)
 $(call inherit-product, vendor/samsung/universal7885-common/universal7885-common-vendor.mk)
 endif
 
-# .apex packages
-$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
-
 # Soong namespaces
 $(call inherit-product, hardware/samsung_slsi-linaro/config/config.mk)
 
@@ -221,6 +218,17 @@ PRODUCT_COPY_FILES += \
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 # DEVICE_PACAKGE_OVERLAYS += $(LOCAL_PATH)/overlay-rom
+
+ifeq ($(TARGET_LOCAL_ARCH),arm64)
+SYMLINK_SUFFIXES := _symlink32 _symlink64
+else
+SYMLINK_SUFFIXES := _symlink32
+endif
+SYMLINK_LIST := libOpenCL libOpenCL.1 libOpenCL.1.1 vulkan_mali
+
+# Symlink targets
+$(foreach suf, $(SYMLINK_SUFFIXES), $(foreach lib, $(SYMLINK_LIST), \
+	$(eval PRODUCT_PACKAGES += $(lib)$(suf))))
 
 # OMX
 PRODUCT_PACKAGES += \
