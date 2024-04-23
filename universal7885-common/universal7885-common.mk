@@ -3,6 +3,11 @@ ifeq ($(TARGET_LOCAL_ARCH),arm64)
 $(call inherit-product, vendor/samsung/universal7885-common/universal7885-common-vendor.mk)
 endif
 
+# Call 7885 rev2 proprietary blob setup if device requires it
+ifeq ($(TARGET_SOC),7884B) or ($(TARGET_SOC),7904)
+$(call inherit-product, vendor/samsung/universal7885-common/universal7885-common-vendor.mk)
+endif
+
 # Soong namespaces
 $(call inherit-product, hardware/samsung_slsi-linaro/config/config.mk)
 
