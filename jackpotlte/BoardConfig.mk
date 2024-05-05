@@ -3,6 +3,9 @@ DEVICE_PATH := device/samsung/jackpotlte
 # Include
 TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 
+# SELinux
+BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
+
 # Asserts
 TARGET_OTA_ASSERT_DEVICE := jackpotlte
 
@@ -19,7 +22,6 @@ BOARD_CUSTOM_BOOTIMG := true
 BOARD_CUSTOM_BOOTIMG_MK := hardware/samsung/mkbootimg.mk
 BOARD_SECOND_OFFSET := 0x00f00000
 BOARD_MKBOOTIMG_ARGS += --second_offset $(BOARD_SECOND_OFFSET)
-
 
 # Display
 TARGET_SCREEN_DENSITY := 441

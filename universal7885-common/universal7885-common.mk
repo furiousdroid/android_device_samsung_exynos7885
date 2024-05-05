@@ -3,11 +3,6 @@ ifeq ($(TARGET_LOCAL_ARCH),arm64)
 $(call inherit-product, vendor/samsung/universal7885-common/universal7885-common-vendor.mk)
 endif
 
-# Call 7885 rev2 proprietary blob setup if device requires it
-ifeq ($(TARGET_SOC),7884B) or ($(TARGET_SOC),7904)
-$(call inherit-product, vendor/samsung/universal7885-common/universal7885-common-vendor.mk)
-endif
-
 # Soong namespaces
 $(call inherit-product, hardware/samsung_slsi-linaro/config/config.mk)
 
@@ -133,11 +128,6 @@ PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint-service.samsung
 endif
 
-# Gatekeeper
-PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0-impl \
-    android.hardware.gatekeeper@1.0-service
-
 # GPS
 PRODUCT_PACKAGES += \
     android.hardware.gnss@2.1.vendor \
@@ -192,11 +182,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/keylayout/Codec3035_Headset_Events.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Codec3035_Headset_Events.kl \
     $(LOCAL_PATH)/configs/keylayout/uinput-sec-fp.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-sec-fp.kl
-
-# Keymaster
-PRODUCT_PACKAGES += \
-    android.hardware.keymaster@4.0-service.samsung \
-    libkeymaster4_1support.vendor
 
 # Media
 PRODUCT_COPY_FILES += \

@@ -31,6 +31,15 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
    android.hardware.sensors@1.0-service
+   
+# Gatekeeper (software, jackpot uses mobicore which is broken(?) on AOSP)
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0-service.software
+    
+# Keymaster
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-service
 
 BUILD_FINGERPRINT := "samsung/jackpotltexx/jackpotlte:9/PPR1.180610.011/A530FXXS8CSK2:user/release-keys"
 

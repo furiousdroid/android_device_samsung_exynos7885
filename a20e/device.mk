@@ -5,6 +5,7 @@ TARGET_LOCAL_ARCH := arm64
 
 # Inherit common device configuration
 $(call inherit-product, device/samsung/universal7885-common/universal7885-common.mk)
+$(call inherit-product, device/samsung/universal7885B-common/universal7885B-common.mk)
 
 $(call inherit-product, vendor/samsung/a20e/a20e-vendor.mk)
 
