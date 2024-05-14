@@ -4,8 +4,6 @@ DEVICE_MANIFEST_FILE := $(MANIFEST_PATH)/manifest.xml
 
 ifeq ($(TARGET_DEVICE),a30s)
 DEVICE_MANIFEST_FILE += $(MANIFEST_PATH)/lineage_manifest_a30s.xml
-else
-DEVICE_MANIFEST_FILE += $(MANIFEST_PATH)/lineage_manifest.xml
 endif
 DEVICE_MATRIX_FILE := $(MANIFEST_PATH)/compatibility_matrix.xml
 ODM_MANIFEST_SKUS += NFC

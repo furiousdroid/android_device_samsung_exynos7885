@@ -145,12 +145,6 @@ PRODUCT_PACKAGES += \
     gralloc.$(TARGET_SOC) \
     libion_exynos
 
-# Health
-PRODUCT_PACKAGES += \
-    android.hardware.health@2.1-impl \
-    android.hardware.health@2.1-impl.recovery \
-    android.hardware.health@2.1-service
-
 # HIDL
 PRODUCT_PACKAGES += \
     libhidltransport \
@@ -330,8 +324,6 @@ PRODUCT_PACKAGES += \
     SmartCharge
 
 PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.samsung \
-    vendor.lineage.touch@1.0-service.ss \
     vendor.lineage.fastcharge@1.0-service.samsung
 
 # Sensors
@@ -363,11 +355,6 @@ PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := frameworks/base/config/boot-im
 # Task profiles
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/tasks/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json
-
-# Thermal
-PRODUCT_PACKAGES += \
-    android.hardware.thermal@1.0-impl \
-    android.hardware.thermal@1.0-service
 
 # Vibrator
 PRODUCT_PACKAGES += \

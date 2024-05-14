@@ -74,9 +74,6 @@ TARGET_KERNEL_ADDITIONAL_FLAGS += HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-l
 
 BOARD_USES_METADATA_PARTITION := true
 
-# Keymaster
-TARGET_KEYMASTER_VARIANT := samsung
-
 # HIDL
 include device/samsung/universal7885-common/configs/vintf/manifest.mk
 
@@ -108,11 +105,9 @@ ENABLE_VENDOR_RIL_SERVICE := true
 BOARD_ROOT_EXTRA_FOLDERS := factory
 BOARD_ROOT_EXTRA_SYMLINKS := /factory:/efs
 
-BOARD_SEPOLICY_TEE_FLAVOR := teegris
+# Sepolicy
 include device/samsung_slsi/sepolicy/sepolicy.mk
 include hardware/samsung-ext/interfaces/sepolicy/SEPolicy.mk
-
-# Sepolicy
 BOARD_VENDOR_SEPOLICY_DIRS += \
     $(COMMON_PATH)/sepolicy/vendor
 SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += \

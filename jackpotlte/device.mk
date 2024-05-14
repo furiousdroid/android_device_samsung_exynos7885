@@ -10,6 +10,8 @@ $(call inherit-product, vendor/samsung/jackpotlte/jackpotlte-vendor.mk)
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
 
+include device/samsung/jackpotlte/vintf/manifest.mk
+
 # device tree for boot image
 PRODUCT_HOST_PACKAGES += \
     dtbhtoolExynos
@@ -38,8 +40,36 @@ PRODUCT_PACKAGES += \
     
 # Keymaster
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0-impl \
-    android.hardware.keymaster@3.0-service
+    android.hardware.keymaster@4.0-service
+    
+# Fingerprint
+#PRODUCT_PACKAGES += \
+#    android.hardware.biometrics.fingerprint@2.1-service.samsung \
+#    libbauthtzcommon_shim
+
+# Health
+#PRODUCT_PACKAGES += \
+#    android.hardware.health@2.1-impl \
+#    android.hardware.health@2.1-service
+
+# Health
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.1.vendor
+
+# Thermal
+PRODUCT_PACKAGES += \
+    android.hardware.thermal@2.0.vendor
+    
+# Camera
+PRODUCT_PACKAGES += \
+    android.frameworks.cameraservice.common@2.0.vendor \
+    android.frameworks.cameraservice.device@2.0.vendor \
+    android.frameworks.cameraservice.service@2.1.vendor \
+    
+# VNDK
+PRODUCT_COPY_FILES += \
+    prebuilts/vndk/v30/arm64/arch-arm-armv8-a/shared/vndk-sp/libutils.so:$(TARGET_COPY_OUT_VENDOR)/lib/libutils-v30.so \
+    prebuilts/vndk/v30/arm64/arch-arm64-armv8-a/shared/vndk-sp/libutils.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libutils-v30.so
 
 BUILD_FINGERPRINT := "samsung/jackpotltexx/jackpotlte:9/PPR1.180610.011/A530FXXS8CSK2:user/release-keys"
 

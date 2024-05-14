@@ -11,6 +11,7 @@ TARGET_OTA_ASSERT_DEVICE := jackpotlte
 
 # Kernel
 TARGET_KERNEL_CONFIG := exynos7885-jackpotlte_defconfig
+TARGET_KERNEL_RECOVERY_CONFIG := exynos7885-jackpotlte-recovery_defconfig
 
 # Device Tree
 TARGET_CUSTOM_DTBTOOL := dtbhtoolExynos
