@@ -36,6 +36,9 @@ BOARD_VENDORIMAGE_PARTITION_SIZE   := 437851136
 # Inherit common board flags
 include device/samsung/universal7885-common/BoardConfigCommon.mk
 
+# HIDL
+include device/samsung/jackpotlte/vintf/manifest.mk
+
 # FSTABs
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/recovery.fstab
 

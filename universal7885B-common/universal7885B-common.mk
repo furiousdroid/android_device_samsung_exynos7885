@@ -11,19 +11,29 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.0-service.samsung \
     libkeymaster4_1support.vendor
-    
-# Thermal
+
+# Fingerprint
+TARGET_BOARD_HAS_FP ?= true
+ifeq ($(TARGET_BOARD_HAS_FP), true)
 PRODUCT_PACKAGES += \
-    android.hardware.thermal@1.0-impl \
-    android.hardware.thermal@1.0-service
+    android.hardware.biometrics.fingerprint-service.samsung
+endif
 
 # Health
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.1-impl \
-    android.hardware.health@2.1-impl.recovery \
     android.hardware.health@2.1-service
 
 # Ext touch
 PRODUCT_PACKAGES += \
     vendor.lineage.touch@1.0-service.samsung \
     vendor.lineage.touch@1.0-service.ss 
+    
+ # Camera
+TARGET_BOARD_CAMERA_COUNT ?= 3
+ifeq ($(TARGET_BOARD_CAMERA_COUNT), 3)
+PRODUCT_PACKAGES += \
+    android.hardware.camera.provider@2.5-service.exynos7885
+else
+PRODUCT_PACKAGES += \
+    android.hardware.camera.provider@2.5-service
+endif

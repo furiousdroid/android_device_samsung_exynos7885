@@ -10,8 +10,6 @@ $(call inherit-product, vendor/samsung/jackpotlte/jackpotlte-vendor.mk)
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
 
-include device/samsung/jackpotlte/vintf/manifest.mk
-
 # device tree for boot image
 PRODUCT_HOST_PACKAGES += \
     dtbhtoolExynos
@@ -30,13 +28,18 @@ PRODUCT_PACKAGES += \
 # Fingerprint
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
-
-PRODUCT_PACKAGES += \
-   android.hardware.sensors@1.0-service
    
-# Gatekeeper (software, jackpot uses mobicore which is broken(?) on AOSP)
+# Gatekeeper
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-service.software
+#    android.hardware.gatekeeper@1.0-impl \
+#    android.hardware.gatekeeper@1.0-service
+# implement mobicore wen
+# Secure Element
+#PRODUCT_PACKAGES += \
+#    android.hardware.secure_element@1.0 \
+#    android.hardware.secure_element@1.1 \
+#    android.hardware.secure_element@1.2
     
 # Keymaster
 PRODUCT_PACKAGES += \
@@ -44,13 +47,20 @@ PRODUCT_PACKAGES += \
     
 # Fingerprint
 #PRODUCT_PACKAGES += \
-#    android.hardware.biometrics.fingerprint@2.1-service.samsung \
-#    libbauthtzcommon_shim
+#    android.hardware.biometrics.fingerprint@2.1-service.samsung
 
-# Health
-#PRODUCT_PACKAGES += \
-#    android.hardware.health@2.1-impl \
-#    android.hardware.health@2.1-service
+# Sensors
+PRODUCT_PACKAGES += \
+    android.hardware.sensors-service.samsung-multihal \
+    android.frameworks.schedulerservice@1.0.vendor \
+    android.frameworks.schedulerservice@1.0 \
+    android.hardware.sensors@2.1.vendor \
+    android.hardware.sensors@2.0.vendor \
+    android.hardware.sensors@2.1 \
+    android.hardware.sensors@2.0 \
+    android.hardware.sensors@1.0-service \
+    android.hardware.sensors@1.0.vendor \
+    android.hardware.sensors@1.0-impl 
 
 # Health
 PRODUCT_PACKAGES += \
@@ -62,9 +72,25 @@ PRODUCT_PACKAGES += \
     
 # Camera
 PRODUCT_PACKAGES += \
-    android.frameworks.cameraservice.common@2.0.vendor \
-    android.frameworks.cameraservice.device@2.0.vendor \
-    android.frameworks.cameraservice.service@2.1.vendor \
+    android.hardware.camera.provider@2.4-impl \
+    android.hardware.camera.provider@2.4-service \
+    android.hardware.camera.common@1.0 \
+    android.hardware.camera.device@1.0 \
+    android.hardware.camera.device@3.2 \
+    android.hardware.camera.device@3.3 \
+    android.hardware.camera.device@3.4 \
+    android.hardware.camera.provider@2.4 \
+    android.hardware.camera.provider@2.5:32 
+    
+# Shims
+#PRODUCT_PACKAGES += \
+#    libexynoscamera_shim \
+#    libstagefright_shim \
+#    libvideobeauty_interface_shim
+
+# FlipFlap
+PRODUCT_PACKAGES += \
+    FlipFlap
     
 # VNDK
 PRODUCT_COPY_FILES += \

@@ -91,16 +91,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
     bluetooth.profile.tbs.server.enabled=true \
     bluetooth.profile.vc.server.enabled=true
 
-# Camera
-TARGET_BOARD_CAMERA_COUNT ?= 3
-ifeq ($(TARGET_BOARD_CAMERA_COUNT), 3)
-PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.5-service.exynos7885
-else
-PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.5-service
-endif
-
 PRODUCT_PACKAGES += \
     libGrallocWrapper \
     libacryl
@@ -120,13 +110,6 @@ $(call inherit-product, hardware/samsung-ext/interfaces/debug-tools/debug.mk)
 PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey \
     android.hardware.drm@1.3.vendor
-
-# Fingerprint
-TARGET_BOARD_HAS_FP ?= true
-ifeq ($(TARGET_BOARD_HAS_FP), true)
-PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint-service.samsung
-endif
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -328,12 +311,18 @@ PRODUCT_PACKAGES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
+    android.hardware.sensors@1.0 \
     android.hardware.sensors@1.0-impl.samsung \
     libsensorndkbridge
 
 # Shims
 PRODUCT_PACKAGES += \
     libshim_sensorndkbridge
+    
+# Health
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.1-impl \
+    android.hardware.health@2.1-impl.recovery \
 
 # Skip Mount
 PRODUCT_PACKAGES += \
