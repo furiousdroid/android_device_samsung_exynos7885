@@ -24,6 +24,7 @@ TARGET_SCREEN_WIDTH := 1080
 # Init
 PRODUCT_PACKAGES += \
     fstab.$(TARGET_SOC) \
+    init.exynos7885.rc
 
 # Fingerprint
 PRODUCT_COPY_FILES += \
@@ -51,13 +52,8 @@ PRODUCT_PACKAGES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    android.hardware.sensors-service.samsung-multihal \
     android.frameworks.schedulerservice@1.0.vendor \
     android.frameworks.schedulerservice@1.0 \
-    android.hardware.sensors@2.1.vendor \
-    android.hardware.sensors@2.0.vendor \
-    android.hardware.sensors@2.1 \
-    android.hardware.sensors@2.0 \
     android.hardware.sensors@1.0-service \
     android.hardware.sensors@1.0.vendor \
     android.hardware.sensors@1.0-impl 

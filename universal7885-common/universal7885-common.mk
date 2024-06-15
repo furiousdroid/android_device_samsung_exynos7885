@@ -140,7 +140,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fstab.$(TARGET_SOC) \
     fstab.enableswap \
-    init.exynos7885.rc \
     init.exynos7885.usb.rc \
     wifi_sec.rc \
     init.target.rc \

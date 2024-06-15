@@ -37,3 +37,7 @@ else
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.5-service
 endif
+
+# Init
+PRODUCT_PACKAGES += \
+    init.exynos7885.rc
