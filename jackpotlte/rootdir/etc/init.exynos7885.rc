@@ -718,6 +718,3 @@ service prepare_param /system/bin/prepare_param.sh /dev/block/platform/13500000.
 on property:ro.debuggable=1
     write /sys/module/kgdboc/parameters/kgdboc ttyFIQ1
     write /sys/module/fiq_debugger/parameters/kgdb_enable 1
-
-on post-fs-data
-mount ext4 /dev/block/platform/13500000.dwmmc0/by-name/OMR prism
