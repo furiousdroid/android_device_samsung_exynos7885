@@ -19,7 +19,7 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
-    name: "init.exynos7885.rc",
+    name: "init.exynos7885.rc.jackpotlte",
     src: "etc/init.exynos7885.rc",
     sub_dir: "init",
     vendor: true,

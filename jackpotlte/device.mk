@@ -24,7 +24,7 @@ TARGET_SCREEN_WIDTH := 1080
 # Init
 PRODUCT_PACKAGES += \
     fstab.$(TARGET_SOC) \
-    init.exynos7885.rc
+    init.exynos7885.rc.jackpotlte
 
 # Fingerprint
 PRODUCT_COPY_FILES += \
@@ -68,6 +68,10 @@ PRODUCT_PACKAGES += \
     
 # Camera
 PRODUCT_PACKAGES += \
+    android.frameworks.cameraservice.common@2.0.vendor \
+    android.frameworks.cameraservice.device@2.0.vendor \
+    android.frameworks.cameraservice.service@2.1.vendor \
+    android.hardware.graphics.common-V4-ndk.vendor \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service \
     android.hardware.camera.common@1.0 \
