@@ -145,6 +145,13 @@ PRODUCT_PACKAGES += \
     init.target.rc \
     init.baseband.rc
 
+# Fingerprint
+TARGET_BOARD_HAS_FP ?= true
+ifeq ($(TARGET_BOARD_HAS_FP), true)
+PRODUCT_PACKAGES += \
+    android.hardware.biometrics.fingerprint-service.samsung
+endif
+
 ifeq ($(TARGET_HAS_UDFPS),true)
 PRODUCT_PACKAGES += \
     init.udfps.rc
@@ -177,9 +184,6 @@ PRODUCT_PACKAGES += \
     libnfc_nci_jni \
     NfcNci \
     Tag
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/nfc/libnfc-sec-vendor.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-sec-vendor.conf
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay

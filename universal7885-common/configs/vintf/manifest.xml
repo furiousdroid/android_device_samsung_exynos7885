@@ -100,6 +100,11 @@
       <fqname>@2.0::ISehBridge/slot2</fqname>
    </hal>
    <hal format="hidl">
+      <name>android.hardware.sensors</name>
+      <transport>hwbinder</transport>
+      <fqname>@1.0::ISensors/default</fqname>
+   </hal>
+   <hal format="hidl">
       <name>vendor.samsung.hardware.radio.channel</name>
       <transport>hwbinder</transport>
       <fqname>@2.0::ISehChannel/epdgd</fqname>

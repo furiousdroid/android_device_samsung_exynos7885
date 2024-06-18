@@ -12,13 +12,6 @@ PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.0-service.samsung \
     libkeymaster4_1support.vendor
 
-# Fingerprint
-TARGET_BOARD_HAS_FP ?= true
-ifeq ($(TARGET_BOARD_HAS_FP), true)
-PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint-service.samsung
-endif
-
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health@2.1-service
@@ -41,3 +34,7 @@ endif
 # Init
 PRODUCT_PACKAGES += \
     init.exynos7885.rc
+
+# NFC
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/nfc/libnfc-sec-vendor.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-sec-vendor.conf
