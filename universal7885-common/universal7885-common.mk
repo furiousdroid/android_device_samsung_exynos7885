@@ -28,7 +28,8 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.effect@7.0-impl \
     libtinycompress \
     audio.r_submix.default \
-    audio.usb.default
+    audio.usb.default \
+    libprocessgroup.vendor
 
 # Audio (BT)
 PRODUCT_PACKAGES += \
@@ -91,9 +92,14 @@ PRODUCT_PRODUCT_PROPERTIES += \
     bluetooth.profile.tbs.server.enabled=true \
     bluetooth.profile.vc.server.enabled=true
 
+# Camera
+PRODUCT_PACKAGES += \
+    android.hardware.camera.provider-service.samsung
+
 PRODUCT_PACKAGES += \
     libGrallocWrapper \
-    libacryl
+    libacryl \
+    libexpat.vendor
 
 # Camera app
 PRODUCT_PACKAGES += \
@@ -103,6 +109,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libsuspend
 
+# ConfigStore
+PRODUCT_PACKAGES += \
+    disable_configstore
+
 # Debug
 $(call inherit-product, hardware/samsung-ext/interfaces/debug-tools/debug.mk)
 
@@ -110,6 +120,18 @@ $(call inherit-product, hardware/samsung-ext/interfaces/debug-tools/debug.mk)
 PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey \
     android.hardware.drm@1.3.vendor
+
+# Fingerprint
+TARGET_BOARD_HAS_FP ?= true
+ifeq ($(TARGET_BOARD_HAS_FP), true)
+PRODUCT_PACKAGES += \
+    android.hardware.biometrics.fingerprint-service.samsung
+endif
+
+# Gatekeeper
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0-impl \
+    android.hardware.gatekeeper@1.0-service
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -128,6 +150,12 @@ PRODUCT_PACKAGES += \
     gralloc.$(TARGET_SOC) \
     libion_exynos
 
+# Health
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.1-impl \
+    android.hardware.health@2.1-impl.recovery \
+    android.hardware.health@2.1-service
+
 # HIDL
 PRODUCT_PACKAGES += \
     libhidltransport \
@@ -143,13 +171,6 @@ PRODUCT_PACKAGES += \
     wifi_sec.rc \
     init.target.rc \
     init.baseband.rc
-
-# Fingerprint
-TARGET_BOARD_HAS_FP ?= true
-ifeq ($(TARGET_BOARD_HAS_FP), true)
-PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint-service.samsung
-endif
 
 ifeq ($(TARGET_HAS_UDFPS),true)
 PRODUCT_PACKAGES += \
@@ -286,7 +307,9 @@ PRODUCT_PACKAGES += \
     android.hardware.radio@1.4.vendor \
     android.hardware.radio@1.0 \
     android.hardware.radio.config@1.2.vendor \
-    android.hardware.radio.deprecated@1.0.vendor
+    android.hardware.radio.deprecated@1.0.vendor \
+    libnetutils.vendor \
+    libsqlite.vendor
 
 PRODUCT_PACKAGES += \
     secril_config_svc
@@ -313,18 +336,12 @@ PRODUCT_PACKAGES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    android.hardware.sensors@1.0 \
     android.hardware.sensors@1.0-impl.samsung \
     libsensorndkbridge
 
 # Shims
 PRODUCT_PACKAGES += \
     libshim_sensorndkbridge
-    
-# Health
-PRODUCT_PACKAGES += \
-    android.hardware.health@2.1-impl \
-    android.hardware.health@2.1-impl.recovery \
 
 # Skip Mount
 PRODUCT_PACKAGES += \
@@ -346,6 +363,11 @@ PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := frameworks/base/config/boot-im
 # Task profiles
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/tasks/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json
+
+# Thermal
+PRODUCT_PACKAGES += \
+    android.hardware.thermal@1.0-impl \
+    android.hardware.thermal@1.0-service
 
 # Vibrator
 PRODUCT_PACKAGES += \

@@ -74,6 +74,17 @@ TARGET_KERNEL_ADDITIONAL_FLAGS += HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-l
 
 BOARD_USES_METADATA_PARTITION := true
 
+# Keymaster
+TARGET_KEYMASTER_VARIANT := samsung
+
+# Camera
+ifneq ($(TARGET_DEVICE),a10)
+SOONG_CONFIG_NAMESPACES += samsungCameraVars
+SOONG_CONFIG_samsungCameraVars += extra_ids
+SOONG_CONFIG_samsungCameraVars_extra_ids := 50
+endif
+$(call soong_config_set,samsungCameraVars,usage_64bit,true)
+
 # HIDL
 include device/samsung/universal7885-common/configs/vintf/manifest.mk
 
@@ -110,6 +121,8 @@ BOARD_ROOT_EXTRA_FOLDERS := efs
 # Sepolicy
 include device/samsung_slsi/sepolicy/sepolicy.mk
 include hardware/samsung-ext/interfaces/sepolicy/SEPolicy.mk
+
+# Sepolicy
 BOARD_VENDOR_SEPOLICY_DIRS += \
     $(COMMON_PATH)/sepolicy/vendor
 SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += \

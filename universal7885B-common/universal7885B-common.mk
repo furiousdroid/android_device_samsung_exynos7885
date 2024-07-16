@@ -1,11 +1,6 @@
 # Build vintf
 include device/samsung/universal7885B-common/vintf/manifest.mk
 include device/samsung/universal7885B-common/BoardConfigCommon.mk
-
-# Gatekeeper
-PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0-impl \
-    android.hardware.gatekeeper@1.0-service
     
 # Keymaster TEEGRIS
 PRODUCT_PACKAGES += \
@@ -19,17 +14,7 @@ PRODUCT_PACKAGES += \
 # Ext touch
 PRODUCT_PACKAGES += \
     vendor.lineage.touch@1.0-service.samsung \
-    vendor.lineage.touch@1.0-service.ss 
-    
- # Camera
-TARGET_BOARD_CAMERA_COUNT ?= 3
-ifeq ($(TARGET_BOARD_CAMERA_COUNT), 3)
-PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.5-service.exynos7885
-else
-PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.5-service
-endif
+    vendor.lineage.touch@1.0-service.ss
 
 # Init
 PRODUCT_PACKAGES += \
