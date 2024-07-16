@@ -23,7 +23,7 @@ TARGET_SCREEN_WIDTH := 1080
 
 # Init
 PRODUCT_PACKAGES += \
-    fstab.$(TARGET_SOC) \
+    fstab.samsungexynos7885 \
     init.exynos7885.rc.jackpotlte
 
 # Fingerprint
@@ -38,6 +38,7 @@ PRODUCT_PACKAGES += \
 # implement mobicore wen
 # Secure Element
 PRODUCT_PACKAGES += \
+    mobicore.rc \
     android.hardware.secure_element@1.0 \
     android.hardware.secure_element@1.1 \
     android.hardware.secure_element@1.2
@@ -51,8 +52,6 @@ PRODUCT_PACKAGES += \
     android.frameworks.schedulerservice@1.0.vendor \
     android.frameworks.schedulerservice@1.0 \
     android.hardware.sensors@1.0-service \
-    android.hardware.sensors@1.0.vendor \
-    android.hardware.sensors@1.0-impl 
 
 # Health
 PRODUCT_PACKAGES += \

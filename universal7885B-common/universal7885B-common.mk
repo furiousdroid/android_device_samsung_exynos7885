@@ -33,6 +33,7 @@ endif
 
 # Init
 PRODUCT_PACKAGES += \
+    fstab.$(TARGET_SOC) \
     init.exynos7885.rc
 
 # NFC

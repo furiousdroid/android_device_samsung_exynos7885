@@ -102,8 +102,10 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)/releasetools
 # RIL
 ENABLE_VENDOR_RIL_SERVICE := true
 
-BOARD_ROOT_EXTRA_FOLDERS := factory
-BOARD_ROOT_EXTRA_SYMLINKS := /factory:/efs
+BOARD_ROOT_EXTRA_FOLDERS := efs
+# Empty folders that break SELinux while not fixing anything
+# BOARD_ROOT_EXTRA_FOLDERS := factory 
+# BOARD_ROOT_EXTRA_SYMLINKS := /factory:/efs
 
 # Sepolicy
 include device/samsung_slsi/sepolicy/sepolicy.mk

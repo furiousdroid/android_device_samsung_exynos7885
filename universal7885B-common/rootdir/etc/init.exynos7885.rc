@@ -369,7 +369,7 @@ on boot
     chmod 0660 /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_duration
     chown system system /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy
     chmod 0660 /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy
-    
+
     chown system system /sys/devices/system/cpu/cpu6/cpufreq/interactive/timer_rate
     chmod 0660 /sys/devices/system/cpu/cpu6/cpufreq/interactive/timer_rate
     chown system system /sys/devices/system/cpu/cpu6/cpufreq/interactive/timer_slack
@@ -551,11 +551,11 @@ on fs
 
 # Permissions for System LSI NFC
 # NFC : Permissions for NFC
-        chmod 0660 /dev/sec-nfc
-        chown nfc nfc /dev/sec-nfc
+		chmod 0660 /dev/sec-nfc
+		chown nfc nfc /dev/sec-nfc
 # Permissions for S.LSI ESE
-        chmod 0660 /dev/p3
-        chown system system /dev/p3
+		chmod 0660 /dev/p3
+		chown system system /dev/p3
 
 on property:sys.boot_completed=1
     swapon_all /vendor/etc/fstab.enableswap

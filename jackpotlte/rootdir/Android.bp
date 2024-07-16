@@ -13,14 +13,21 @@
 // limitations under the License.
 
 prebuilt_etc {
-    name: "fstab.exynos7885",
-    src: "etc/fstab.exynos7885",
+    name: "fstab.samsungexynos7885",
+    src: "etc/fstab.samsungexynos7885",
     vendor: true,
 }
 
 prebuilt_etc {
     name: "init.exynos7885.rc.jackpotlte",
     src: "etc/init.exynos7885.rc",
+    sub_dir: "init",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "mobicore.rc",
+    src: "etc/mobicore.rc",
     sub_dir: "init",
     vendor: true,
 }

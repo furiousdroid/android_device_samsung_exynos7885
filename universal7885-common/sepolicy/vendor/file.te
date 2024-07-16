@@ -4,6 +4,7 @@ type proc_swappiness, fs_type, proc_type;
 # data types
 type mediadrm_data_file, file_type, data_file_type;
 type nfc_vendor_data_file, file_type, data_file_type;
+# type nfc_data_file, file_type, core_data_file_type;
 type sensors_data_file, file_type, data_file_type;
 
 # sysfs types

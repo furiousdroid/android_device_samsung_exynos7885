@@ -1,5 +1,38 @@
 {
     "Nodes": [
+	{
+            "Name": "CPUMaxFreq",
+            "Path": "/sys/power/cpufreq_max_limit",
+            "Values": [
+                "2184000",
+                "-1"
+            ],
+            "ResetOnInit": true
+        },
+        {
+            "Name": "CPUMinFreq",
+            "Path": "/sys/power/cpufreq_min_limit",
+            "Values": [
+                "2184000",
+                "1664000",
+                "1560000",
+                "1144000",
+                "936000",
+		"728000",
+		"520000",
+                "0"
+            ],
+            "ResetOnInit": true
+        },
+        {
+            "Name": "GPUPowerPolicy",
+            "Path": "/sys/devices/platform/11500000.mali/power_policy",
+            "Values": [
+                "always_on",
+                "coarse_demand"
+            ],
+            "ResetOnInit": true
+        },
         {
             "Name": "TouchscreenEnable",
             "Path": "/sys/class/sec/tsp/input/enabled",
