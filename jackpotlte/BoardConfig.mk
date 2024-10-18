@@ -37,6 +37,18 @@ BOARD_VENDORIMAGE_PARTITION_SIZE   := 437851136
 # Inherit common board flags
 include device/samsung/universal7885-common/BoardConfigCommon.mk
 
+# Using SLSI Linaro libexynoscamera
+TARGET_USES_EXYNOS_BSP_CAMERA := true
+TARGET_EXYNOS_BSP_CAMERA_FLAVOUR := 7885
+BOARD_BACK_CAMERA_SENSOR := SENSOR_NAME_S5K2P6
+BOARD_FRONT_CAMERA_SENSOR := SENSOR_NAME_S5K3P8SP
+BOARD_BACK_CAMERA_ROTATION := 0
+BOARD_FRONT_CAMERA_ROTATION := 0
+BOARD_SECURE_CAMERA_ROTATION := 0
+
+# Inherit vintf changes
+include $(DEVICE_PATH)/configs/vintf/manifest.mk
+
 # FSTABs
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/recovery.fstab
 

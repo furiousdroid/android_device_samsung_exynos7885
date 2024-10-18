@@ -254,13 +254,10 @@ on post-fs-data
     chown system system /sys/devices/svc/Camera/SVC_front_module
 
     chmod 0755 /sys/kernel/debug/tracing
-    restorecon /sys/kernel/debug/tracing/trace_marker
-
-# Samsung Pay
-    mkdir /efs/pfw_data 0760 spay spay    
+    restorecon /sys/kernel/debug/tracing/trace_marker    
 
 # MST/NFC Switch
-    chown spay system /dev/mst_ctrl
+    chown system /dev/mst_ctrl
     chmod 0660 /dev/mst_ctrl
 
 on boot

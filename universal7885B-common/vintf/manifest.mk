@@ -1,3 +1,3 @@
-MANIFEST_PATH := device/samsung/universal7885B-common/vintf
+MANIFEST_PATH := device/samsung/jackpotlte/vintf
 
-DEVICE_MANIFEST_FILE += $(MANIFEST_PATH)/lineage_manifest.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(MANIFEST_PATH)/jackpotlte_framework_matrix.xml

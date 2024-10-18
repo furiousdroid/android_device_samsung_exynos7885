@@ -24,7 +24,7 @@ TARGET_SCREEN_WIDTH := 1080
 # Init
 PRODUCT_PACKAGES += \
     fstab.samsungexynos7885 \
-    init.exynos7885.rc.jackpotlte
+    init.samsungexynos7885.rc
 
 # Fingerprint
 PRODUCT_COPY_FILES += \
@@ -68,17 +68,22 @@ PRODUCT_PACKAGES += \
     android.frameworks.cameraservice.service@2.1.vendor \
     android.hardware.graphics.common-V4-ndk.vendor \
     android.hardware.camera.provider@2.4-impl \
-    android.hardware.camera.provider@2.4-service \
     android.hardware.camera.common@1.0 \
     android.hardware.camera.device@1.0 \
     android.hardware.camera.device@3.2 \
     android.hardware.camera.device@3.3 \
     android.hardware.camera.device@3.4 \
     android.hardware.camera.provider@2.4 \
-    android.hardware.camera.provider@2.5:32 
+    libpower.vendor \
+    libutilscallstack.vendor \
+    libgui.vendor \
+    camera.exynos7885 \
+    libexynoscamera3 \
+#    android.hardware.camera.provider@2.4-service \
     
 # Shims
-#PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES += \
+    libcamera_metadata_helper
 #    libexynoscamera_shim \
 #    libstagefright_shim \
 #    libvideobeauty_interface_shim
@@ -94,7 +99,7 @@ PRODUCT_COPY_FILES += \
     
 # NFC
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/nfc/libnfc-sec-vendor.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-sec-vendor.conf
+    $(LOCAL_PATH)/configs/nfc/libnfc-sec-vendor.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-sec-vendor.conf
 
 BUILD_FINGERPRINT := "samsung/jackpotltexx/jackpotlte:9/PPR1.180610.011/A530FXXS8CSK2:user/release-keys"
 
