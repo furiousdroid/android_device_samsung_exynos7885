@@ -1,0 +1,4 @@
+## Bluetooth
+bluetooth.device.default_name=Galaxy A8
+ro.efspartitions.cpefs=CPEFS
+ro.efspartitions.radio=RADIO

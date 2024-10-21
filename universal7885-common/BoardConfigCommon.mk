@@ -71,7 +71,7 @@ TARGET_KERNEL_SOURCE := kernel/samsung/exynos7885
 KERNEL_SUPPORTS_LLVM_TOOLS := true
 TARGET_KERNEL_OPTIONAL_LD := true
 TARGET_KERNEL_ADDITIONAL_FLAGS += HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
-TARGET_KERNEL_CLANG_VERSION := vortex
+#TARGET_KERNEL_CLANG_VERSION := vortex
 
 BOARD_USES_METADATA_PARTITION := true
 
@@ -107,14 +107,15 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)/releasetools
 # RIL
 ENABLE_VENDOR_RIL_SERVICE := true
 
-BOARD_ROOT_EXTRA_FOLDERS := factory
-BOARD_ROOT_EXTRA_SYMLINKS := /factory:/efs
-
-BOARD_SEPOLICY_TEE_FLAVOR := teegris
-include device/samsung_slsi/sepolicy/sepolicy.mk
-include hardware/samsung-ext/interfaces/sepolicy/SEPolicy.mk
+BOARD_ROOT_EXTRA_FOLDERS := efs
+# Empty folders that break SELinux while not fixing anything
+# BOARD_ROOT_EXTRA_FOLDERS := factory 
+# BOARD_ROOT_EXTRA_SYMLINKS := /factory:/efs
 
 # Sepolicy
+BOARD_SEPOLICY_TEE_FLAVOR := $(TARGET_TEE_KERNEL)
+include device/samsung_slsi/sepolicy/sepolicy.mk
+include hardware/samsung-ext/interfaces/sepolicy/SEPolicy.mk
 BOARD_VENDOR_SEPOLICY_DIRS += \
     $(COMMON_PATH)/sepolicy/vendor
 SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += \
