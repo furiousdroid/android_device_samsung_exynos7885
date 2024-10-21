@@ -96,6 +96,11 @@ TARGET_VENDOR_PROP += $(COMMON_PATH)/configs/vendor_64.prop
 else
 TARGET_VENDOR_PROP += $(COMMON_PATH)/configs/vendor_32.prop
 endif
+ifeq ($(TARGET_TEE_KERNEL),teegris)
+TARGET_VENDOR_PROP += $(COMMON_PATH)/configs/efspie.prop
+else
+TARGET_VENDOR_PROP += $(COMMON_PATH)/configs/efsnougat.prop
+endif
 
 # Recovery
 BOARD_HAS_DOWNLOAD_MODE := true
@@ -108,9 +113,8 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)/releasetools
 ENABLE_VENDOR_RIL_SERVICE := true
 
 BOARD_ROOT_EXTRA_FOLDERS := efs
-# Empty folders that break SELinux while not fixing anything
-# BOARD_ROOT_EXTRA_FOLDERS := factory 
-# BOARD_ROOT_EXTRA_SYMLINKS := /factory:/efs
+BOARD_ROOT_EXTRA_FOLDERS := factory 
+BOARD_ROOT_EXTRA_SYMLINKS := /factory:/efs
 
 # Sepolicy
 BOARD_SEPOLICY_TEE_FLAVOR := $(TARGET_TEE_KERNEL)

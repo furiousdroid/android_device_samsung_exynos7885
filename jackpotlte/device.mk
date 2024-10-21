@@ -24,7 +24,6 @@ TARGET_SCREEN_WIDTH := 1080
 
 # Init
 PRODUCT_PACKAGES += \
-    fstab.samsungexynos7885 \
     init.exynos7885.rc.jackpotlte
 
 # Fingerprint

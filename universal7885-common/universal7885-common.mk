@@ -186,13 +186,19 @@ PRODUCT_PACKAGES += \
     init.target.rc \
     init.baseband.rc
 
-ifeq ($(BOARD_EXYNOS7885_REV),pie)
+# If the device shipped pie, use fstabs with pie partition names
+ifeq ($(BOARD_SEPOLICY_TEE_FLAVOR),teegris)
 PRODUCT_PACKAGES += \
     fstab.$(TARGET_SOC) \
     init.exynos7885.rc
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.exynos7885:$(TARGET_COPY_OUT_RAMDISK)/fstab.$(TARGET_SOC)
+else
+# TODO - change the fstab name back fstab.exynos7885 for eureka. Right now, using nameless.
+# TODO - commonize init
+PRODUCT_PACKAGES += \
+    fstab.samsungexynos7885 
 endif
 
 ifeq ($(TARGET_HAS_UDFPS),true)
@@ -210,7 +216,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/keylayout/uinput-sec-fp.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-sec-fp.kl
 
 # Keymaster and secure element
-ifeq ($(BOARD_EXYNOS7885_REV),pie)
+ifeq ($(BOARD_SEPOLICY_TEE_FLAVOR),teegris)
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.0-service.samsung \
     libkeymaster4_1support.vendor
@@ -242,9 +248,12 @@ PRODUCT_PACKAGES += \
     NfcNci \
     Tag
 
-ifeq ($(BOARD_EXYNOS7885_REV),pie)
+ifeq ($(BOARD_SEPOLICY_TEE_FLAVOR),teegris)
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/nfc/libnfc-sec-vendor.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-sec-vendor.conf
+    $(LOCAL_PATH)/configs/nfc/s3nrn82.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-sec-vendor.conf
+else
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/nfc/s3nrn81.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-sec-vendor.conf
 endif
 
 # Overlays
@@ -376,7 +385,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.lineage.fastcharge@1.0-service.samsung
 
-ifeq ($(BOARD_EXYNOS7885_REV),pie)
+ifeq ($(BOARD_SEPOLICY_TEE_FLAVOR),teegris)
 PRODUCT_PACKAGES += \
     vendor.lineage.touch@1.0-service.samsung \
     vendor.lineage.touch@1.0-service.ss 
