@@ -76,7 +76,9 @@ TARGET_KERNEL_ADDITIONAL_FLAGS += HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-l
 BOARD_USES_METADATA_PARTITION := true
 
 # Keymaster
+ifeq ($(BOARD_SEPOLICY_TEE_FLAVOR),teegris)
 TARGET_KEYMASTER_VARIANT := samsung
+endif
 
 # HIDL
 include device/samsung/universal7885-common/configs/vintf/manifest.mk
